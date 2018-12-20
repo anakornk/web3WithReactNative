@@ -68,8 +68,9 @@ react-native link
 ```
 yarn add web3
 ```
-8. Import and Test web3
-In App.js, import web3.
+8. Import and Test web3  
+
+In App.js, import web3.  
 ```
 import Web3 from 'web3';
 ```
