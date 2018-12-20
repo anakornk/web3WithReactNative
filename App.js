@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import Web3 from 'web3';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,6 +19,19 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  
+  componentWillMount() {
+    this.web3  = new Web3('wss://mainnet.infura.io/ws');
+    this.web3.eth.getBlock('latest').then(console.log).catch(console.log);
+    this.web3.eth.getAccounts(function(error,res) {
+      if(!error) {
+        console.log(res);
+      } else {
+        console.log(error);
+      }
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
