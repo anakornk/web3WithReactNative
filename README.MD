@@ -12,7 +12,8 @@ web3: 1.0.0-beta.37
 ## Setup
 1. `git clone git@github.com:anakornk/web3WithReactNative.git`
 2. `yarn install`
-3. `react-native run-ios`
+3. `ganache-cli`
+4. `react-native run-ios`
 
 ## Step By Step Guide
 1. Create a new React Native Project
