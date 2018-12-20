@@ -21,7 +21,7 @@ type Props = {};
 export default class App extends Component<Props> {
   
   componentWillMount() {
-    this.web3  = new Web3('wss://mainnet.infura.io/ws');
+    this.web3  = new Web3('ws://localhost:8545');
     this.web3.eth.getBlock('latest').then(console.log).catch(console.log);
     this.web3.eth.getAccounts(function(error,res) {
       if(!error) {
@@ -29,7 +29,7 @@ export default class App extends Component<Props> {
       } else {
         console.log(error);
       }
-    })
+    });
   }
 
   render() {
