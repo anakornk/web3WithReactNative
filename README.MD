@@ -4,7 +4,7 @@ A boilertemplate for using Web3 1.x with React Native
 ### Test Environment
 ```
 node: v10.4.1
-npm: 6.4.1
+yarn: 6.4.1
 react: 16.6.3
 react-native: 0.57.8
 web3: 1.0.0-beta.37
