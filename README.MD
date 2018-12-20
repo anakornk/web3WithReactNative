@@ -69,10 +69,11 @@ react-native link
 yarn add web3
 ```
 8. Import and Test web3
+In App.js, import web3.
 ```
 import Web3 from 'web3';
 ```
-Add the following code inside your React component. The code will print out information of the latest block and accounts
+Add the following code inside your App React component. The code will print out information of the latest block and accounts
 ```
   componentWillMount() {
     this.web3  = new Web3('ws://localhost:8545');
