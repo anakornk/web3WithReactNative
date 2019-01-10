@@ -1,6 +1,15 @@
-import { URL, URLSearchParams } from "whatwg-url";
-global.URL = URL;
-global.URLSearchParams = URLSearchParams;
+// Does not work for android, comment out for now.
+// import { URL, URLSearchParams } from "whatwg-url";
+// global.URL = URL;
+// global.URLSearchParams = URLSearchParams;
+
+import url from "url";
+global.URL = class URL {
+  constructor(inputUrl) {
+    return url.parse(inputUrl);
+  }
+};
+
 
 if (typeof btoa === 'undefined') {
   global.btoa = function (str) {

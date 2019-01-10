@@ -17,17 +17,32 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+const provider = Platform.select({
+  ios: 'ws://localhost:8545',
+  android: 'ws://10.0.2.2:8545'
+});
+
 type Props = {};
 export default class App extends Component<Props> {
+  state = {
+    accounts: 'EMPTY'
+  }
   
   componentWillMount() {
-    this.web3  = new Web3('ws://localhost:8545');
+    this.web3  = new Web3(provider);
     this.web3.eth.getBlock('latest').then(console.log).catch(console.log);
+    var that = this;
     this.web3.eth.getAccounts(function(error,res) {
       if(!error) {
         console.log(res);
+        that.setState({
+          accounts: JSON.stringify(res)
+        })
       } else {
         console.log(error);
+        that.setState({
+          accounts: 'error'
+        })
       }
     });
   }
@@ -38,6 +53,7 @@ export default class App extends Component<Props> {
         <Text style={styles.welcome}>Welcome to React Native!</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
+        <Text>{this.state.accounts}</Text>
       </View>
     );
   }
