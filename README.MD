@@ -44,9 +44,12 @@ module.exports = {
 ```
 4. In the project root directory, create `globals.js`  
 ```
-import { URL, URLSearchParams } from "whatwg-url";
-global.URL = URL;
-global.URLSearchParams = URLSearchParams;
+import url from "url";
+global.URL = class URL {
+  constructor(inputUrl) {
+    return url.parse(inputUrl);
+  }
+};
 
 if (typeof btoa === 'undefined') {
   global.btoa = function (str) {
